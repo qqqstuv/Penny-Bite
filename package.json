@@ -1,5 +1,5 @@
 {
-  "name": "pennybite",
+  "name": "Penny-Bite",
   "version": "0.2.5",
   "description": "A webapp that shows free food on Google Map",
   "engines": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    // "url": "https://github.com/heroku/node-js-getting-started"
   },
   "keywords": [
     "node",
