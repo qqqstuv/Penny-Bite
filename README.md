@@ -44,6 +44,7 @@ Run "$ npm install" and "$ heroku local" again.
 - If we want to add an environmental variable (Config vars), follow instruction at: [Config vars](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-config-vars)
 - If a developer wants to modify live postgres database or run the server locally, he needs to have postgres installed locally. Info at: 
 [Postgres setup locally](https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database)
+[Postgres tutorial with Heroku](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup)
 
 ## Documentation
 
