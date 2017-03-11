@@ -1,6 +1,6 @@
 {
   "name": "Penny-Bite",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "description": "A webapp that shows free food on Google Map",
   "engines": {
     "node": "6.10.0"
