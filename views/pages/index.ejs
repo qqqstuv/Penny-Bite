@@ -61,10 +61,22 @@
             var url ="http://pennybite.herokuapp.com/getpost"
             try{
               $.get(url,{}, function(data){
-                console.log(data);
+                console.log(data.rows);
+                (data.rows).forEach(function(entry) {
+                    console.log(entry);
+                  //   var marker = new google.maps.Marker({
+                  //     map: resultsMap,
+                  //     position: results[0].geometry.location
+                  // });
+                });
+
+                var marker = new google.maps.Marker({
+                  map: resultsMap,
+                  position: results[0].geometry.location
+                });
               });
             }catch(err){
-                    console.log(err);
+              console.log(err);
             }
           });
       });
