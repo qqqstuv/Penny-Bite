@@ -84,13 +84,13 @@
               $("#icon-subject").show();
               $.get(url,
               {
-                rating: ratingparam,
                 location: locationparam,
                 name: nameparam,
                 description: descriptionparam,
                 lng: lngparam,
-                lat: latparam
-
+                lat: latparam,
+                lng2: lngparam,
+                lat2: latparam
               }, function(data){
                 console.log(data);
               });
