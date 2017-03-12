@@ -1,7 +1,7 @@
 
 
 module.exports = {
-	query: function (pg,result2) {
+	query: function (pg,callback) {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query('SELECT * FROM users;', function(err, result) {
 				done();
@@ -11,12 +11,9 @@ module.exports = {
 				})
 				if (err){ 
 					console.error(err); 
-					// response.send("Error " + err); 
-					return "is null";
-				}else{
-					console.log("RESULT IN ELSE QUERIES " + result.rows);
-					result2 = result;
+					return;
 				}
+				callback(null, result);
 			});
 		});
 	}
