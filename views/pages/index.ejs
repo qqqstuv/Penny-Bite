@@ -54,7 +54,7 @@
         });
       }
       $( document ).ready(function() {
-          $( "#getall" ).click(function() {
+          $( "#getall" ).clic k(function() {
             var url ="http://pennybite.herokuapp.com/getpost"
             try{
               $.get(url,{}, function(data){
@@ -99,7 +99,6 @@
         function sendAPI(results){
             console.log(results);
             var locationparam = $('#location').val();
-            var nameparam = $('#name').val();
             var descriptionparam = $('#description').val();
             var ratingparam = $('#rating').val();
             var titleparam = $('#title').val();
@@ -110,7 +109,7 @@
               $.get(url,
               {
                 rating: ratingparam,
-                name: nameparam,
+                name: 'McNutt',
                 title: titleparam,
                 description: descriptionparam,
                 location: locationparam,
@@ -135,12 +134,12 @@
       <input id="address" type="textbox" value="Victoria, BC">
       <input id="submit" type="button" value="Geocode">
     </div>
-    <input id="title" type="text" placeholder="title"></input>
-    <input id="location" type="text" placeholder="Enter Location"></input>
-    <input id="name" type="text" placeholder="Pin Name"></input>
-    <input id="description" type="text" placeholder="Description"></input>
-    <input id="rating" type="text" placeholder="Rating"></input>
-    <button id="getall" type"button">Get all postings</button>
+    <input id="title" type="text" placeholder="title"></input><br>
+    <input id="location" type="text" placeholder="Enter Location"></input><br>
+    <!-- <input id="name" type="text" placeholder="Pin Name"></input> -->
+    <input id="description" type="text" placeholder="Description"></input><br>
+    <input id="rating" type="text" placeholder="Rating"></input><br>
+    <button id="getall" type"button">Get all current postings</button>
     <div id="jordan"></div>
   </body>
 </html>
