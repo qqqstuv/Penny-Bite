@@ -9,10 +9,9 @@ var queries = require('./queries');
 app.get('/insertpost', function (request, response) {
 
   	//parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
-	console.log(request.query);  
-	var parsed    = JSON.parse(request.query);
-	var parameter = [];
-
+	console.log(request.query);
+  var values = Object.values(request.query);
+  console.log(values);
 	for(var i in parsed) {
 		parameter.push(parsed[i]);
 	}
