@@ -77,6 +77,7 @@
             var nameparam = $('#name').val();
             var descriptionparam = $('#description').val();
             var ratingparam = $('#rating').val();
+            var titleparam = $('#title').val();
             var lngparam = results[1];
             var latparam = results[0];
             var url ="http://pennybite.herokuapp.com/insertpost"
@@ -84,14 +85,14 @@
               $("#icon-subject").show();
               $.get(url,
               {
-                location: locationparam,
+                rating: ratingparam
                 name: nameparam,
+                title: titleparam,
                 description: descriptionparam,
-                lng: lngparam,
+                location: locationparam,
                 lat: latparam,
-                lng2: lngparam,
-                lat2: latparam,
-                name2: nameparam
+                lng: lngparam,
+                status: 'A',
               }, function(data){
                 console.log(data);
               });
@@ -106,7 +107,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC54yvfzQ8bEhyc5hwsHtJKE8j3fRv7Mo0&callback=initMap">
     </script>
-
+    <input id="title" type="text" placeholder="title"></input>
     <input id="location" type="text" placeholder="Enter Location"></input>
     <input id="name" type="text" placeholder="Pin Name"></input>
     <input id="description" type="text" placeholder="Description"></input>
