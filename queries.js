@@ -14,7 +14,7 @@ module.exports = {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			var query_string = QUERY_STRING[queryNum];
 			if (parameter) {
-				client.query(query_string, function(err, result) {
+				client.query(query_string, parameter,function(err, result) {
 					done();
 					// result.rows.forEach(function(x){
 					// 	console.log(x);
@@ -26,7 +26,7 @@ module.exports = {
 					callback(null, result);
 				});				
 			}else{
-				client.query(query_string, parameter, function(err, result) {
+				client.query(query_string, function(err, result) {
 					done();
 					result.rows.forEach(function(x){
 						console.log(x.email);
