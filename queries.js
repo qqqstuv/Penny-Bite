@@ -10,13 +10,12 @@ module.exports = {
 					console.log(x.email);
 				})
 				if (err){ 
-					console.error("ERROR "  + err); 
+					console.error(err); 
 					// response.send("Error " + err); 
-					return null;
+					return "is null";
 				}else{
 					return result.rows;
 				}
-				return result.rows;
 			});
 		});
 	}
