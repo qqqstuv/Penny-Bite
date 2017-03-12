@@ -9,8 +9,8 @@ var queries = require('./queries');
 app.get('/db', function (request, response) {
   var result = queries.query(pg);
   console.log("RESULT IS " + result);
-  if(result != null){
-    response.render('pages/db', {results: result.rows} );
+  if(result){
+    response.render('pages/db', {results: result.rows});
   }
 });
 
