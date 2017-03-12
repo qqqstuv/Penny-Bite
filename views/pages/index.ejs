@@ -72,6 +72,7 @@
           try{
             $.get(url,{}, function(data){
               $("#jordan").empty();
+              $("#jordan").css("overflow", "scroll");
               (data.rows).forEach(function(entry) {
                 var myLatLng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
                 console.log(entry);
