@@ -130,6 +130,26 @@
             }
         }
 
+        var infowindow = new google.maps.InfoWindow();
+
+        for (var i = 0; i < arraylng.length-1; i++) {
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(arraylng[i], arraylat[i]),
+              map: map
+            });
+
+            makeInfoWindowEvent(map, infowindow, "test" + i, marker);
+
+            markers.push(marker);
+          }
+        }
+
+        function makeInfoWindowEvent(map, infowindow, contentString, marker) {
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(contentString);
+            infowindow.open(map, marker);
+          });
+        }
       }
     </script>
     <script async defer
