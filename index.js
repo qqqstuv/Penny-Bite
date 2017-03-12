@@ -8,7 +8,7 @@ var queries = require('./queries');
 // Database sample call
 app.get('/db', function (request, response) {
   parameter = undefined;
-  queryNum = 0;
+  queryNum = 1;
   queries.query(pg, parameter,queryNum, function(err, result){
     if (err) {
         console.log("error", error);
