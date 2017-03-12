@@ -6,8 +6,9 @@ var QUERY_STRING = {
 
 
 module.exports = {
-	query: function (pg,parameter, queryNum, callback) {
+	query: function (pg, parameter, queryNum, callback) {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+			
 			client.query('SELECT * FROM users;', function(err, result) {
 				done();
 				result.rows.forEach(function(x){
