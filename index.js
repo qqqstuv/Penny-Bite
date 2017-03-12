@@ -28,6 +28,29 @@ app.get('/insertpost', function (request, response) {
   });
 });
 
+app.get('/getpost', function (request, response) {
+
+    //parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
+  // console.log(request.query);
+  // var parameter = [];
+  // for (var key in request.query){
+  //   parameter.push(request.query[key]);
+  // }
+
+  // for(var i in parsed) {
+  //  parameter.push(parsed[i]);
+  // }
+    parameter = []
+    queryNum = 1;
+    queries.query(pg, parameter,queryNum, function(err, result){
+    if (err) {
+    console.log("error", error);
+    } else {
+        response.send(result);
+    }  
+  });
+});
+
 app.get('/delete', function (request, response) {
   	//parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
 	console.log(request);  

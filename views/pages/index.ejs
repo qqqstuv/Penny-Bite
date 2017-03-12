@@ -56,6 +56,18 @@
           geocodeAddress(geocoder, map);
         });
       }
+      $( document ).ready(function() {
+          $( "#getall" ).click(function() {
+            var url ="http://pennybite.herokuapp.com/getpost"
+            try{
+              $.get(url,{}, function(data){
+                console.log(data);
+              });
+            }catch(err){
+                    console.log(err);
+            }
+          });
+      });
 
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
@@ -82,7 +94,6 @@
             var latparam = results[0];
             var url ="http://pennybite.herokuapp.com/insertpost"
             try{
-              $("#icon-subject").show();
               $.get(url,
               {
                 rating: ratingparam,
@@ -112,7 +123,7 @@
     <input id="name" type="text" placeholder="Pin Name"></input>
     <input id="description" type="text" placeholder="Description"></input>
     <input id="rating" type="text" placeholder="Rating"></input>
-    <button type"button">Drop</button>
+    <button id="getall" type"button">Get all postings</button>
 
   </body>
 </html>
