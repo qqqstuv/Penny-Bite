@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Geocoding service</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -73,7 +77,7 @@
                     var text = key + " " + entry[key];
                     newDiv = newDiv.add($("<div>").text(text));
                   }
-                  $("#jordan").append(newDiv);
+                  $("#jordan").append(newDiv).append($("<br>"));
                   });
                   
               });
