@@ -20,16 +20,6 @@ app.get('/db', function (request, response) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* Example of a call to database. More info at: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
 
 pg.defaults.ssl = true;
