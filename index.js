@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var pg = require('pg');
+var pg = require('pg-promise');
 
 var queries = require('./queries');
 

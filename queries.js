@@ -10,7 +10,7 @@ module.exports = {
 					console.log(x.email);
 				})
 				if (err){ 
-					console.error(err); 
+					console.error("ERROR "  + err); 
 					// response.send("Error " + err); 
 					return null;
 				}else{
