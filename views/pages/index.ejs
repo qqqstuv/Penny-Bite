@@ -64,13 +64,14 @@
               $.get(url,{}, function(data){
                 (data.rows).forEach(function(entry) {
                   var myLatLng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
-                  console.log(myLatLng);
-                  console.log(map);
+                  console.log(entry);
                   var marker = new google.maps.Marker({
                     map: map,
                     position: myLatLng
                   });
-                });
+                  var newDiv = $("<div>").attr("id", ).text(entry.description).addClass("description");
+                  });
+                  $("#jordan").append(newDiv);
               });
             }catch(err){
               console.log(err);
@@ -133,6 +134,6 @@
     <input id="description" type="text" placeholder="Description"></input>
     <input id="rating" type="text" placeholder="Rating"></input>
     <button id="getall" type"button">Get all postings</button>
-
+    <div id="jordan"></div>
   </body>
 </html>
