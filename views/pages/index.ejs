@@ -72,10 +72,10 @@
           try{
             $.get(url,{}, function(data){
               $("#jordan").empty();
-              $("#jordan").css("overflow", "scroll");
+              $("#jordan").css("overflow", "scroll").height(400);
               (data.rows).forEach(function(entry) {
                 var myLatLng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
-                console.log(entry);
+                // console.log(entry);
                 var marker = new google.maps.Marker({
                   map: map,
                   position: myLatLng
