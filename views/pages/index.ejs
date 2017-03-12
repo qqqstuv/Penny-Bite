@@ -58,6 +58,7 @@
             var url ="http://pennybite.herokuapp.com/getpost"
             try{
               $.get(url,{}, function(data){
+                $("#jordan").empty();
                 (data.rows).forEach(function(entry) {
                   var myLatLng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
                   console.log(entry);
@@ -66,7 +67,6 @@
                     position: myLatLng
                   });
                   // Create posting details
-                  $("#jordan").empty();
                   var newDiv = $("<div>").text("Food Pin Entry");
                   for(key in entry){
                     var text = key + " " + entry[key];
