@@ -1,7 +1,7 @@
 
 
 module.exports = {
-	query: function (pg) {
+	query: function (pg,result2) {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query('SELECT * FROM users;', function(err, result) {
 				done();
@@ -15,7 +15,7 @@ module.exports = {
 					return "is null";
 				}else{
 					console.log("RESULT IN ELSE QUERIES " + result.rows);
-					return (result.rows);
+					result2 = result;
 				}
 			});
 		});
