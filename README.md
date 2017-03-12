@@ -4,7 +4,7 @@ To be created based on nodejs tutorial with Heroku
 
 A barebones Node.js app using [Express ](http://expressjs.com/).
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+The website is hosted on heroku and running Postgres database.
 
 ## Running Locally
 
