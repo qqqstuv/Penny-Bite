@@ -79,12 +79,14 @@
                   map: map,
                   position: myLatLng
                 });
-                var info = "Title: " + entry.title +  " Rating: " + entry.rating + " Description: " + entry.description;
+                var info = "<b>" + "Title: " + entry.title + "</b>" + 
+                           "<b>" + " Rating: " + entry.rating + "</b>" +
+                           "<b>" + " Description: " + entry.description + "</b>";
                 makeInfoWindowEvent(map, infowindow, info, marker);
                 // Create posting details
                 var newDiv = $("<div>").text("Food Pin Entry").css("font-weight","Bold");
                 for(key in entry){
-                  var text = key + " " + entry[key];
+                  var text = key + ": " + entry[key];
                   newDiv = newDiv.add($("<div>").text(text));
                 }
                 $("#jordan").append(newDiv).append($("<br>"));
