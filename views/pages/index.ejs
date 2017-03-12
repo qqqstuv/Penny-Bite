@@ -66,6 +66,7 @@
                     position: myLatLng
                   });
                   // Create posting details
+                  $("#jordan").empty();
                   var newDiv = $("<div>").text("Food Pin Entry");
                   for(key in entry){
                     var text = key + " " + entry[key];
@@ -104,7 +105,7 @@
             var titleparam = $('#title').val();
             var lngparam = results[1];
             var latparam = results[0];
-            var url ="http://pennybite.herokuapp.com/insertpost"
+            var url ="http://pennybite.herokuapp.com/insertpost";
             try{
               $.get(url,
               {
@@ -131,7 +132,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC54yvfzQ8bEhyc5hwsHtJKE8j3fRv7Mo0&callback=initMap">
     </script>
     <div id="floating-panel">
-      <input id="address" type="textbox" value="Sydney, NSW">
+      <input id="address" type="textbox" value="Victoria, BC">
       <input id="submit" type="button" value="Geocode">
     </div>
     <input id="title" type="text" placeholder="title"></input>
