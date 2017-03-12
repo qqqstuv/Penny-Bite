@@ -4,7 +4,7 @@ var QUERY_STRING = {
 	2:'SELECT password FROM users WHERE user_name = $1;',
 	3:'SELECT * FROM posts where post_id = $1;',
 	4:'INSERT INTO users VALUES( $1, $2, #3);',
-	5:'DElETE FROM users WHERE user_name = $1;'
+	5:'DElETE FROM users WHERE user_name = $1;',
 	6:'DELETE FROM posts WHERE post_id = $1;'
 };
 
