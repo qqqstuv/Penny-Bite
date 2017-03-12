@@ -63,12 +63,12 @@
             try{
               $.get(url,{}, function(data){
                 (data.rows).forEach(function(entry) {
-                    var myLatLng = {lat: entry.latitude, lng: entry.longitude};
-                    console.log(myLatLng);
-                    console.log(map);
-                    var marker = new google.maps.Marker({
-                      map: map,
-                      position: myLatLng
+                  var myLatlng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
+                  console.log(myLatLng);
+                  console.log(map);
+                  var marker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng
                   });
                 });
               });
