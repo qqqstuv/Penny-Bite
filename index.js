@@ -60,13 +60,8 @@ app.get('/db', function (request, response) {
     }  
   });
 });
-<<<<<<< HEAD
 
-
-=======
 */
->>>>>>> 610fedb2350452adacf905ec34fd4f6e8ecd740c
-
 /* Example of a call to database. More info at: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
 
 pg.defaults.ssl = true;
