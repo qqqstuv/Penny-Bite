@@ -1,11 +1,15 @@
+var QUERY_STRING = { 
+	0:'SELECT * FROM users;', 
+	1:'SELECT * FROM posts;'
+};
+
 
 
 module.exports = {
-	query: function (pg,callback) {
+	query: function (pg,parameter, queryNum, callback) {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query('SELECT * FROM users;', function(err, result) {
 				done();
-				console.log("RESULT IN QUERIES " + result.rows);
 				result.rows.forEach(function(x){
 					console.log(x.email);
 				})

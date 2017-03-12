@@ -7,18 +7,15 @@ var queries = require('./queries');
 
 // Database sample call
 app.get('/db', function (request, response) {
-  queries.query(pg, function(err, result){
+  parameter = undefined;
+  queryNum = 0;
+  queries.query(pg, parameter,queryNum, function(err, result){
     if (err) {
         console.log("error", error);
     } else {
         response.render('pages/db', {results: result.rows});
     }  
   });
-  // console.log("RESULT IS " + result);
-  // // console.log(queries.query(pg));
-  // if(result){
-  //   response.render('pages/db', {results: result.rows});
-  // }
 });
 
 
