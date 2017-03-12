@@ -6,7 +6,7 @@ var QUERY_STRING = {
 	4:'INSERT INTO users(user_name, password, email) VALUES( $1, $2, $3);',
 	5:'DElETE FROM users WHERE user_name = ($1);',
 	6:'DELETE FROM posts WHERE post_id = ($1);',
-	7:'INSERT INTO posts(rating, poster_user_name, title, description,location) VALUES($1, $2, $3, $4, $5);'
+	7:'INSERT INTO posts(rating, poster_user_name, title, description, location) VALUES($1, $2, $3, $4, $5);'
 };
 
 module.exports = {
@@ -16,9 +16,6 @@ module.exports = {
 			if (parameter) {
 				client.query(query_string, parameter,function(err, result) {
 					done();
-					// result.rows.forEach(function(x){
-					// 	console.log(x);
-					// })
 					if (err){ 
 						console.error(err); 
 						return;
@@ -28,9 +25,6 @@ module.exports = {
 			}else{
 				client.query(query_string, function(err, result) {
 					done();
-					result.rows.forEach(function(x){
-						console.log(x.email);
-					})
 					if (err){ 
 						console.error(err); 
 						return;
