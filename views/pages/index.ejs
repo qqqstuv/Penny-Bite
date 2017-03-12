@@ -76,6 +76,7 @@
             var locationparam = $('#location').val();
             var nameparam = $('#name').val();
             var descriptionparam = $('#description').val();
+            var ratingparam = $('#rating').val();
             var lngparam = results[1];
             var latparam = results[0];
             var url ="http://pennybite.herokuapp.com/insertpost"
@@ -83,11 +84,13 @@
               $("#icon-subject").show();
               $.get(url,
               {
+                rating: ratingparam,
                 location: locationparam,
                 name: nameparam,
                 description: descriptionparam,
                 lng: lngparam,
                 lat: latparam
+
               }, function(data){
                 console.log(data);
               });
@@ -106,6 +109,7 @@
     <input id="location" type="text" placeholder="Enter Location"></input>
     <input id="name" type="text" placeholder="Pin Name"></input>
     <input id="description" type="text" placeholder="Description"></input>
+    <input id="rating" type="text" placeholder="Rating"></input>
     <button type"button">Drop</button>
 
   </body>

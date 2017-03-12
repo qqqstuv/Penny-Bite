@@ -10,7 +10,7 @@ app.get('/insertpost', function (request, response) {
 
   	//parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
 	console.log(request.query);  
-	var parsed    = JSON.parse(request);
+	var parsed    = JSON.parse(request.query);
 	var parameter = [];
 
 	for(var i in parsed) {
