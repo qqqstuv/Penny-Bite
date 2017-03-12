@@ -1,6 +1,6 @@
 var QUERY_STRING = { 
 	0:'SELECT * FROM users;', 
-	1:'SELECT * FROM posts;',
+	1:'SELECT post_id,rating,updated_at,title,description,location, latitude,longitude FROM posts ORDER BY updated_at DESC;',
 	2:'SELECT password FROM users WHERE user_name = ($1);',
 	3:'SELECT * FROM posts where post_id = ($1);',
 	4:'INSERT INTO users(user_name, password, email) VALUES( $1, $2, $3);',
