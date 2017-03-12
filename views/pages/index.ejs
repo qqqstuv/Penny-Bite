@@ -63,7 +63,7 @@
             try{
               $.get(url,{}, function(data){
                 (data.rows).forEach(function(entry) {
-                  var myLatlng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
+                  var myLatLng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
                   console.log(myLatLng);
                   console.log(map);
                   var marker = new google.maps.Marker({
