@@ -79,9 +79,9 @@
                   map: map,
                   position: myLatLng
                 });
-                var info = "<b>" + "Title: " + entry.title + "</b>" + 
-                           "<b>" + " Rating: " + entry.rating + "</b>" +
-                           "<b>" + " Description: " + entry.description + "</b>";
+                var info = "<b>" + "Title: " + entry.title + "</b>" + "<br>" +
+                           "<b>" + " Rating: " + entry.rating + "</b>" + "<br>" +
+                           "<b>" + " Description: " + entry.description + "</b>" + "<br>";
                 makeInfoWindowEvent(map, infowindow, info, marker);
                 // Create posting details
                 var newDiv = $("<div>").text("Food Pin Entry").css("font-weight","Bold");
