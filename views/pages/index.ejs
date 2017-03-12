@@ -64,15 +64,11 @@
                 console.log(data.rows);
                 (data.rows).forEach(function(entry) {
                     console.log(entry);
-                  //   var marker = new google.maps.Marker({
-                  //     map: resultsMap,
-                  //     position: results[0].geometry.location
-                  // });
-                });
-
-                var marker = new google.maps.Marker({
-                  map: resultsMap,
-                  position: results[0].geometry.location
+                    var myLatLng = {lat: entry.latitude, lng: entry.longitude};
+                    var marker = new google.maps.Marker({
+                      map: map,
+                      position: myLatLng
+                  });
                 });
               });
             }catch(err){
