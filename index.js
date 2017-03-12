@@ -6,12 +6,40 @@ var pg = require('pg');
 var queries = require('./queries');
 
 // Database sample call
-app.get('/db', function (request, response) {
-  parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
-  queryNum = 7;
-  queries.query(pg, parameter,queryNum, function(err, result){
+app.get('/insertpost', function (request, response) {
+
+  	//parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
+	console.log(request);  
+	var parsed    = JSON.parse(request);
+	var parameter = [];
+
+	for(var i in parsed) {
+		parameter.push(parsed[i]);
+	}
+  	queryNum = 7;
+  	queries.query(pg, parameter,queryNum, function(err, result){
     if (err) {
-        console.log("error", error);
+		console.log("error", error);
+    } else {
+        response.render('pages/db', {results: result});
+    }  
+  });
+});
+
+app.get('/delete', function (request, response) {
+  	//parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
+	console.log(request);  
+	
+	var parsed    = JSON.parse(request);
+	var parameter = [];
+
+	for(var i in parsed) {
+		parameter.push(parsed[i]);
+	}
+  	queryNum = 6;
+  	queries.query(pg, parameter,queryNum, function(err, result){
+    if (err) {
+		console.log("error", error);
     } else {
         response.render('pages/db', {results: result});
     }  
@@ -19,16 +47,20 @@ app.get('/db', function (request, response) {
 });
 
 
-
-
-
-
-
-
-
-
-
-
+/*
+//delete post from tables based on post_id
+app.get('/db', function (request, response) {
+  parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
+  queryNum = 7;
+  queries.query(pg, parameter,queryNum, function(err, result){
+    if (err) {
+        console.log("error", error);
+    } else {
+        response.render('pages/deletepost', {results: result});
+    }  
+  });
+});
+*/
 
 /* Example of a call to database. More info at: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
 
