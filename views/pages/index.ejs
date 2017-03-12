@@ -1,99 +1,112 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ../partials/header.ejs %>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript">
-  var map;
-  function initMap() {
-    var uluru = {lat: -25.363, lng: 131.044};
-    map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4,
-      center: uluru
-    });
-    // var marker = new google.maps.Marker({
-    //   position: uluru,
-    //   map: map
-    // });
-  }
-  $(document).ready(function(){
-      $("#addpin").click(function(){
-          console.log(map);
-          var myLatLng = {lat: -25.363, lng: 131.044};
-          var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-          });
-      });
-      var semesterUrl = 'http://pennybite.herokuapp.com';
-    $.get(semesterUrl, function(data){
-      console.log(data);
-    });
-  });
-  </script>
-  <style>
+  <head>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+        <style>
        #map {
         height: 400px;
         width: 100%;
        }
     </style>
-</head>
-   
-<body>
-    <button id="addpin" type="button">Add pin</button>
-    <h3>My Google Maps Demo</h3>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input id="submit" type="button" value="Geocode">
+    </div>
     <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
 
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+            sendAPI([results[0].geometry.location.lat(), results[0].geometry.location.lng()])
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+        function sendAPI(results){
+            console.log(results);
+            var locationparam = $('#location').val();
+            var nameparam = $('#name').val();
+            var descriptionparam = $('#description').val();
+            var lngparam = results[1];
+            var latparam = results[0];
+            var url ="http://pennybite.herokuapp.com/"
+            try{
+              $("#icon-subject").show();
+              $.post(url,
+              {
+                location: locationparam,
+                name: nameparam,
+                description: descriptionparam,
+                lng: lngparam,
+                lat: latparam
+              }, function(data){
+                console.log(data);
+              });
+              // console.log("try to fetch subject area info for semester" + semester);
+            }catch(err){
+                    console.log(err);
+            }
+        }
+
+      }
+    </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC54yvfzQ8bEhyc5hwsHtJKE8j3fRv7Mo0&callback=initMap">
     </script>
 
+    <input id="location" type="text" placeholder="Enter Location"></input>
+    <input id="name" type="text" placeholder="Pin Name"></input>
+    <input id="description" type="text" placeholder="Description"></input>
+    <button type"button">Drop</button>
 
-
-  <% include ../partials/nav.ejs %>
-
-
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" class="alert-link">Getting Started with Node on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/node-js-getting-started">Heroku Button</a> on the repository.</li>
-
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/node-js-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd node-js-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started with Node on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/deploying-nodejs">Deploying Node Apps on Heroku</a></li>
-      </ul>
-    </div>
-  </div> <!-- row -->
-
-</div>
-
-
-</body>
+  </body>
 </html>
