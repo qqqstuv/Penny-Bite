@@ -8,38 +8,36 @@ var QUERY_STRING = {
 	6:'DELETE FROM posts WHERE post_id = $1;'
 };
 
-
-
 module.exports = {
 	query: function (pg, parameter, queryNum, callback) {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			var query_string = QUERY_STRING[queryNum];
-			client.query(query_string, function(err, result) {
-				done();
-				result.rows.forEach(function(x){
-					console.log(x.email);
-				})
-				if (err){ 
-					console.error(err); 
-					return;
-				}
-				callback(null, result);
-			});
+			if (parameter) {
+				client.query(query_string, function(err, result) {
+					done();
+					result.rows.forEach(function(x){
+						console.log(x.email);
+					})
+					if (err){ 
+						console.error(err); 
+						return;
+					}
+					callback(null, result);
+				});				
+			}else{
+				client.query(query_string, parameter, function(err, result) {
+					done();
+					result.rows.forEach(function(x){
+						console.log(x.email);
+					})
+					if (err){ 
+						console.error(err); 
+						return;
+					}
+					callback(null, result);
+				});				
+			}
+
 		});
 	}
 };
-
-var zemba = function () {
-}
-
-// app.get('/db', function (request, response) {
-//  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-//    client.query('SELECT * FROM users;', function(err, result) {
-//      done();
-//      if (err)
-//       { console.error(err); response.send("Error " + err); }
-//      else
-//       { response.render('pages/db', {results: result.rows} ); }
-//    });
-//  });
-// });
