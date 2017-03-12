@@ -56,51 +56,42 @@
         });
       }
       $( document ).ready(function() {
-          $( "#getall" ).click(function() {
-            var url ="http://pennybite.herokuapp.com/getpost"
-            try{
-              $.get(url,{}, function(data){
-                $("#jordan").empty();
-                (data.rows).forEach(function(entry) {
-                  var myLatLng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
-                  console.log(entry);
-                  var marker = new google.maps.Marker({
-                    map: map,
-                    position: myLatLng
-                  });
-                  // Create posting details
-                  var newDiv = $("<div>").text("Food Pin Entry");
-                  for(key in entry){
-                    var text = key + " " + entry[key];
-                    newDiv = newDiv.add($("<div>").text(text));
-                  }
-                  $("#jordan").append(newDiv).append($("<br>"));
-                  });
-                  
-              });
-            }catch(err){
-              console.log(err);
-            }
-          });
-        var infowindow = new google.maps.InfoWindow();
+      var infowindow = new google.maps.InfoWindow();
 
-        for (var i = 0; i < arraylng.length-1; i++) {
-            var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(arraylng[i], arraylat[i]),
-              map: map
+      function makeInfoWindowEvent(map, infowindow, contentString, marker) {
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(contentString);
+          infowindow.open(map, marker);
+        });
+      }
+        $( "#getall" ).click(function() {
+          var url ="http://pennybite.herokuapp.com/getpost"
+          try{
+            $.get(url,{}, function(data){
+              $("#jordan").empty();
+              (data.rows).forEach(function(entry) {
+                var myLatLng = new google.maps.LatLng(parseFloat(entry.latitude),parseFloat(entry.longitude));
+                console.log(entry);
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: myLatLng
+                });
+                makeInfoWindowEvent(map, infowindow, "test" + i, marker);
+                // Create posting details
+                var newDiv = $("<div>").text("Food Pin Entry");
+                for(key in entry){
+                  var text = key + " " + entry[key];
+                  newDiv = newDiv.add($("<div>").text(text));
+                }
+                $("#jordan").append(newDiv).append($("<br>"));
+                });
+                
             });
-
-            makeInfoWindowEvent(map, infowindow, "test" + i, marker);
-
-            markers.push(marker);
+          }catch(err){
+            console.log(err);
           }
+        });
 
-        function makeInfoWindowEvent(map, infowindow, contentString, marker) {
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(contentString);
-            infowindow.open(map, marker);
-          });
-        }
       });
 
       function geocodeAddress(geocoder, resultsMap) {
