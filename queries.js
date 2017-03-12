@@ -14,7 +14,8 @@ module.exports = {
 					// response.send("Error " + err); 
 					return "is null";
 				}else{
-					return result.rows;
+					console.log("RESULT IN ELSE QUERIES " + result.rows);
+					return (result.rows);
 				}
 			});
 		});

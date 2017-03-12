@@ -7,9 +7,9 @@ var queries = require('./queries');
 
 // Database sample call
 app.get('/db', function (request, response) {
-  // var result = queries.query(pg);
-  // console.log("RESULT IS " + result);
-  console.log(queries.query(pg));
+  var result = queries.query(pg);
+  console.log("RESULT IS " + result);
+  // console.log(queries.query(pg));
   if(result){
     response.render('pages/db', {results: result.rows});
   }
