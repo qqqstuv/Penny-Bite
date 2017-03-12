@@ -46,6 +46,7 @@
       var map;
       var infowindow;
       function initMap() {
+
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
           center: {lat: -34.397, lng: 150.644}
@@ -55,9 +56,10 @@
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
+        infowindow = new google.maps.InfoWindow();
       }
       $( document ).ready(function() {
-      infowindow = new google.maps.InfoWindow();
+      
 
       function makeInfoWindowEvent(map, infowindow, contentString, marker) {
         google.maps.event.addListener(marker, 'click', function() {
