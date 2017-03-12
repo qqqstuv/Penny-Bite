@@ -4,18 +4,19 @@ module.exports = {
 	query: function (pg) {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 			client.query('SELECT * FROM users;', function(err, result) {
-			done();
-			console.log("RESULT IN QUERIES " + result.rows);
-			result.rows.forEach(function(x){
-				console.log(x.email);
-			})
-			if (err){ 
-				console.error(err); 
-				// response.send("Error " + err); 
-				return null;
-			}else{
+				done();
+				console.log("RESULT IN QUERIES " + result.rows);
+				result.rows.forEach(function(x){
+					console.log(x.email);
+				})
+				if (err){ 
+					console.error(err); 
+					// response.send("Error " + err); 
+					return null;
+				}else{
+					return result.rows;
+				}
 				return result.rows;
-			}
 			});
 		});
 	}
