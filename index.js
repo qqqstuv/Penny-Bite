@@ -7,7 +7,7 @@ var queries = require('./queries');
 
 // Database sample call
 app.get('/db', function (request, response) {
-  parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125"];
+  parameter = ["1","Isaac69","McDicks","May contain nuts","ECS 125","111","222","A"];
   queryNum = 7;
   queries.query(pg, parameter,queryNum, function(err, result){
     if (err) {
