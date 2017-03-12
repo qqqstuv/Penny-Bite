@@ -69,7 +69,12 @@
                     map: map,
                     position: myLatLng
                   });
-                  var newDiv = $("<div>").text(entry.description).addClass("description");
+                  // Create posting details
+                  var newDiv = $("<div>").text("Food Pin Entry");
+                  for(key in entry){
+                    var text = key + " " + entry[key];
+                    newDiv = newDiv.add($("<div>").text(text));
+                  }
                   $("#jordan").append(newDiv);
                   });
                   
