@@ -80,7 +80,7 @@
                   position: myLatLng
                 });
                 var info = "Rating: " + entry.rating + " description: " + entry.description;
-                makeInfoWindowEvent(map, infowindow, "test", marker);
+                makeInfoWindowEvent(map, infowindow, info, marker);
                 // Create posting details
                 var newDiv = $("<div>").text("Food Pin Entry");
                 for(key in entry){
