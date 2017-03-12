@@ -13,8 +13,8 @@ var QUERY_STRING = {
 module.exports = {
 	query: function (pg, parameter, queryNum, callback) {
 		pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-			
-			client.query('SELECT * FROM users;', function(err, result) {
+			var query_string = QUERY_STRING[queryNum];
+			client.query(query_string, function(err, result) {
 				done();
 				result.rows.forEach(function(x){
 					console.log(x.email);
